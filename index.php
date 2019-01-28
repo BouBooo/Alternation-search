@@ -29,10 +29,22 @@
                         $list = $db->query('SELECT * FROM entreprises ORDER BY id DESC');
                         while($item = $list->fetch()) 
                         {
+                            if($item['category'] == "web")
+                            {
+                                $category = "Web development";
+                            }
+                            else if($item['category'] == "software")
+                            {
+                                $category = "Software development";
+                            }
+                            else if($item['category'] == "network")
+                            {
+                                $category = "Network / Security";
+                            }
                             echo '<tr>';
                             echo '<td>'. $item['name'] . '</td>';
-                            echo '<td>'. $item['category'] . '</td>';
-                            echo '<td>'. $item['site'] . '</td>';
+                            echo '<td>'. $category . '</td>';
+                            echo '<td><a href="'. $item['site'] . '" target="_blank">Website</a></td>';
                             echo '<td>'. $item['phone'] . '</td>';
                             echo '<td>'. $item['address'] . '</td>';
                             echo '<td>'. $item['status'] . '</td>';
